@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hello" v-if="post">
     <h1>{{ post.title }}</h1>
     <pre>{{ JSON.stringify(post) }}</pre>
     <img v-if="post.mainImage" 
