@@ -4,6 +4,7 @@ export async function getPosts(first = 50) {
     let query = `*[_type == "post"] {
             _id,
             title,
+            shortIntro,
             slug,
             publishedAt,
             mainImage,

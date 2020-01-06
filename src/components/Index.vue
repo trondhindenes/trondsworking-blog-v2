@@ -1,19 +1,30 @@
 <template>
   <div class="hello">
+    <div class="header">
+      <h2>{{ $appName }}</h2>
+    </div>
     <div v-if="!loading">
-      <div v-for="post in posts" v-bind:key="post._id">
+      <div class="card" v-for="post in posts" v-bind:key="post._id">
         <router-link :to="{name: 'post', params: {id: post._id}}">
-          dis da link
+          <h2>{{ (post.title).toUpperCase() }}</h2>
         </router-link>
-        <pre>{{ post.title }}</pre>
-        <!-- <single-post v-bind:id="post._id"></single-post> -->
+        <h5>{{ post.publishedAt | moment("YYYY-MM-DD") }}</h5>
+        <img
+          v-if="post.mainImage"
+          :src="imageUrlFor( post.mainImage ).ignoreImageParams().height(200)"
+        />
+        <strong v-if="post.shortIntro">{{ post.shortIntro }}</strong>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {getPosts, getSinglePost} from '../data';
+import { getPosts, getSinglePost } from "../data";
+import sanity from "../sanity";
+import imageUrlBuilder from "@sanity/image-url";
+
+const imageBuilder = imageUrlBuilder(sanity);
 //import SinglePost from './SinglePost'
 
 export default {
@@ -33,20 +44,26 @@ export default {
   },
   methods: {
     async fetchData() {
-        this.posts = await getPosts();
-        this.loading = false
-        this.singlePost = await getSinglePost('0d5a2118-a5b3-4201-a0ba-6b8faecf08b9')
+      this.posts = await getPosts();
+      this.loading = false;
+      this.singlePost = await getSinglePost(
+        "0d5a2118-a5b3-4201-a0ba-6b8faecf08b9"
+      );
+    },
+    imageUrlFor(source) {
+      return imageBuilder.image(source);
     }
   },
   watch: {
-    'fetchData': 'fetchData'
+    fetchData: "fetchData"
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
+/* this is the default vue styling: */
+/* h3 {
   margin: 40px 0 0;
 }
 ul {
@@ -59,5 +76,5 @@ li {
 }
 a {
   color: #42b983;
-}
+} */
 </style>
