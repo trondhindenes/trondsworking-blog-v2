@@ -15,8 +15,6 @@ import VueMarkdown from "vue-markdown";
 import sanity from "../sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
-const imageBuilder = imageUrlBuilder(sanity);
-
 export default {
   name: "SinglePost",
   components: {
@@ -33,8 +31,9 @@ export default {
       this.post = await getSinglePost(this.id);
     },
     imageUrlFor(source) {
+      let imageBuilder = imageUrlBuilder(sanity);
       return imageBuilder.image(source);
-    },
+    }
   },
   async created() {
     await this.fetchData();

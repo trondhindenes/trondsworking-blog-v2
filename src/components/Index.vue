@@ -11,7 +11,7 @@
         <h5>{{ post.publishedAt | moment("YYYY-MM-DD") }}</h5>
         <img
           v-if="post.mainImage"
-          :src="imageUrlFor( post.mainImage ).ignoreImageParams().height(200)"
+          :src="imageUrlFor(post.mainImage).ignoreImageParams().height(200)"
         />
         <strong v-if="post.shortIntro">{{ post.shortIntro }}</strong>
       </div>
@@ -20,12 +20,10 @@
 </template>
 
 <script>
+/* eslint no-unused-vars: "off" */
 import { getPosts, getSinglePost } from "../data";
 import sanity from "../sanity";
 import imageUrlBuilder from "@sanity/image-url";
-
-const imageBuilder = imageUrlBuilder(sanity);
-//import SinglePost from './SinglePost'
 
 export default {
   name: "Index",
@@ -51,6 +49,7 @@ export default {
       );
     },
     imageUrlFor(source) {
+      let imageBuilder = imageUrlBuilder(sanity);
       return imageBuilder.image(source);
     }
   },
