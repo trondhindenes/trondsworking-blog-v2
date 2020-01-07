@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <div class="header">
-      <h2>{{ $appName }}</h2>
+      <h1>{{ $appName }}</h1>
+      <h4>{{ $appDescription }}</h4>
     </div>
     <div v-if="!loading">
       <div class="card" v-for="post in posts" v-bind:key="post._id">

@@ -7,6 +7,7 @@
 <script>
 import Vue from 'vue'
 Vue.prototype.$appName = 'Trond\'s Working!'
+Vue.prototype.$appDescription = 'Ramblings about computers and such.'
 Vue.use(require('vue-moment'));
 export default {
   name: 'app'
@@ -26,6 +27,7 @@ export default {
 
 * {
   box-sizing: border-box;
+  max-width: 1000px;
 }
 
 /* Add a gray background color with some padding */
@@ -40,10 +42,19 @@ body {
 
 /* Header/Blog Title */
 .header {
-  padding: 30px;
+  font-family: 'Amatic SC', cursive;
+  padding: 10px;
   font-size: 40px;
   text-align: center;
-  background: white;
+  background: #a9dfc7;
+}
+
+.div-center {
+  text-align: center;
+}
+
+.centercolumn {   
+  width: 100%;
 }
 
 /* Create two unequal columns that floats next to each other */
