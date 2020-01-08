@@ -1,9 +1,8 @@
 <template>
-  <div class="hello" v-if="post">
-    <h1>{{ post.title }}</h1>
-    <pre>{{ JSON.stringify(post) }}</pre>
+  <div class="card" v-if="post">
+    <h2>{{ (post.title).toUpperCase() }}</h2>
     <img v-if="post.mainImage" 
-        :src="imageUrlFor( post.mainImage ).ignoreImageParams().width(500)"
+        :src="imageUrlFor( post.mainImage ).ignoreImageParams()"
     />
     <vue-markdown v-for="blob in post.body" v-bind:key="blob._id">{{ blob.markdown }}</vue-markdown>
   </div>

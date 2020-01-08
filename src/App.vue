@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <div id="centerdiv" class="centerDiv">
     <router-view />
+    </div>
   </div>
 </template>
 
@@ -25,17 +27,22 @@ export default {
   margin-top: 60px;
 } */
 
-* {
+/* * {
   box-sizing: border-box;
   max-width: 1000px;
-}
+} */
 
 /* Add a gray background color with some padding */
 body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
+  font-family: 'Merriweather', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 100%;
   color: #2c3e50;
+  font-weight: 400;
+  line-height: 1.75;
+  font-kerning: normal;
   padding: 20px;
   background: #f1f1f1;
 }
@@ -52,6 +59,13 @@ body {
 .div-center {
   text-align: center;
 }
+
+.centerDiv
+    {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
 .centercolumn {   
   width: 100%;
