@@ -12,8 +12,9 @@
         <h5>{{ post.publishedAt | moment("YYYY-MM-DD") }}</h5>
         <img
           v-if="post.mainImage"
-          :src="imageUrlFor(post.mainImage).ignoreImageParams().height(200)"
+          :src="imageUrlFor(post.mainImage).ignoreImageParams().width(calculateImageWidth)"
         />
+        <br>
         <strong v-if="post.shortIntro">{{ post.shortIntro }}</strong>
       </div>
     </div>
@@ -35,11 +36,21 @@ export default {
     return {
       loading: true,
       posts: [],
-      singlePost: null
+      singlePost: null,
+      window: {
+        width: 0,
+        height: 0,
+        imageWidth: 0,
+      }
     };
   },
   async created() {
     await this.fetchData();
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     async fetchData() {
@@ -52,7 +63,24 @@ export default {
     imageUrlFor(source) {
       let imageBuilder = imageUrlBuilder(sanity);
       return imageBuilder.image(source);
+    },
+    handleResize() {
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
     }
+  },
+  computed: {
+    calculateImageWidth: function() {
+      let imageWidth = this.window.width
+      if (imageWidth > 700) {
+        imageWidth = 700
+      }
+      else {
+        imageWidth = imageWidth - 100
+      }
+      return imageWidth
+    }
+    
   },
   watch: {
     fetchData: "fetchData"
