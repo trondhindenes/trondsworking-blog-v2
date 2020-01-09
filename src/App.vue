@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <div id="centerdiv" class="centerDiv">
-    <router-view />
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-Vue.prototype.$appName = 'Trond\'s Working!'
-Vue.prototype.$appDescription = 'Ramblings about computers and such.'
-Vue.use(require('vue-moment'));
+import Vue from "vue";
+Vue.prototype.$appName = "Trond's Working!";
+Vue.prototype.$appDescription = "Ramblings about computers and such.";
+Vue.use(require("vue-moment"));
 export default {
-  name: 'app'
-}
+  name: "app"
+};
 </script>
 
 <style>
@@ -35,7 +35,7 @@ export default {
 /* Add a gray background color with some padding */
 body {
   /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 100%;
@@ -49,7 +49,7 @@ body {
 
 /* Header/Blog Title */
 .header {
-  font-family: 'Amatic SC', cursive;
+  font-family: "Amatic SC", cursive;
   padding: 10px;
   font-size: 40px;
   text-align: center;
@@ -60,20 +60,19 @@ body {
   text-align: center;
 }
 
-.centerDiv
-    {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+.centerDiv {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
-.centercolumn {   
+.centercolumn {
   width: 100%;
 }
 
 /* Create two unequal columns that floats next to each other */
 /* Left column */
-.leftcolumn {   
+.leftcolumn {
   float: left;
   width: 75%;
 }
@@ -94,10 +93,9 @@ body {
 
 /* Add a card effect for articles */
 .card {
-   background-color: white;
-   padding: 20px;
-   margin-top: 20px;
-   
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .card h2 {
@@ -129,5 +127,4 @@ a {
   color: #319e6d;
   text-decoration: none;
 }
-
 </style>

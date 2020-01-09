@@ -6,7 +6,7 @@ switch (window.location.hostname) {
     break;
 
   default:
-    _LOG_LEVEL = "warning";
+    _LOG_LEVEL = "warn";
 }
 
 

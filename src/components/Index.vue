@@ -61,9 +61,6 @@ export default {
     async fetchData() {
       this.posts = await getPosts();
       this.loading = false;
-      this.singlePost = await getSinglePost(
-        "0d5a2118-a5b3-4201-a0ba-6b8faecf08b9"
-      );
     },
     imageUrlFor(source) {
       let imageBuilder = imageUrlBuilder(sanity);
