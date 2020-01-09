@@ -14,7 +14,7 @@
           v-if="post.mainImage"
           :src="imageUrlFor(post.mainImage).ignoreImageParams().width(calculateImageWidth)"
         />
-        <br>
+        <br />
         <strong v-if="post.shortIntro">{{ post.shortIntro }}</strong>
       </div>
     </div>
@@ -40,7 +40,7 @@ export default {
       window: {
         width: 0,
         height: 0,
-        imageWidth: 0,
+        imageWidth: 0
       }
     };
   },
@@ -50,7 +50,7 @@ export default {
     this.handleResize();
   },
   destroyed() {
-    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener("resize", this.handleResize);
   },
   methods: {
     async fetchData() {
@@ -64,23 +64,42 @@ export default {
       let imageBuilder = imageUrlBuilder(sanity);
       return imageBuilder.image(source);
     },
+
+    compareSizes(size, ref) {
+      //only trigger resize if size diff is big
+      if (ref - size > 100) {
+        return true;
+      }
+      if (ref - size < -100) {
+        return true;
+      }
+      return false;
+    },
+
     handleResize() {
-      this.window.width = window.innerWidth;
-      this.window.height = window.innerHeight;
+      let clientHeight = document.documentElement.clientHeight;
+      if (this.compareSizes(clientHeight, this.window.height)) {
+        this.window.height = clientHeight;
+        this.$log.debug("clientHeight", clientHeight);
+
+        let clientWidth = document.documentElement.clientWidth;
+        if (this.compareSizes(clientWidth, this.window.width)) {
+          this.window.width = clientWidth;
+          this.$log.debug("clientWidth", clientWidth);
+        }
+      }
     }
   },
   computed: {
     calculateImageWidth: function() {
-      let imageWidth = this.window.width
+      let imageWidth = this.window.width;
       if (imageWidth > 700) {
-        imageWidth = 700
+        imageWidth = 700;
+      } else {
+        imageWidth = imageWidth - 100;
       }
-      else {
-        imageWidth = imageWidth - 100
-      }
-      return imageWidth
+      return imageWidth;
     }
-    
   },
   watch: {
     fetchData: "fetchData"
