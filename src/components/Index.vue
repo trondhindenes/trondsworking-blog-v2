@@ -66,7 +66,8 @@ export default {
     },
 
     compareSizes(size, ref) {
-      //only trigger resize if size diff is big
+      //only trigger resize if size diff is big, 
+      //so we don't do excessive image gets against sanity.io
       if (ref - size > 100) {
         return true;
       }
