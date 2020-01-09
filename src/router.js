@@ -13,7 +13,8 @@ export default new Router({
         {
             path: "/",
             name: 'index',
-            component: Index
+            component: Index,
+            props: route => ({ cameFrom: route.params.cameFrom })
         },
         {
             path: '/post/:id',

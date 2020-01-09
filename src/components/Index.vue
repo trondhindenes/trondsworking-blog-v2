@@ -7,7 +7,7 @@
     <div v-if="!loading">
       <div class="card" v-for="post in posts" v-bind:key="post._id">
         <router-link :to="{name: 'post', params: {id: post._id}}">
-          <h2>{{ (post.title).toUpperCase() }}</h2>
+          <h2 :id=post._id>{{ (post.title).toUpperCase() }}</h2>
         </router-link>
         <h5>{{ post.publishedAt | moment("YYYY-MM-DD") }}</h5>
         <img
@@ -29,6 +29,7 @@ import imageUrlBuilder from "@sanity/image-url";
 
 export default {
   name: "Index",
+  props: ["cameFrom"],
   components: {
     //'single-post': SinglePost
   },
@@ -46,8 +47,12 @@ export default {
   },
   async created() {
     await this.fetchData();
+    if (this.cameFrom) {
+      location.hash = this.cameFrom
+    }
     window.addEventListener("resize", this.handleResize);
     this.handleResize();
+    this.$log.debug('cameFrom', this.cameFrom)
   },
   destroyed() {
     window.removeEventListener("resize", this.handleResize);
