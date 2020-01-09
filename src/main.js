@@ -3,11 +3,13 @@ import App from './App.vue'
 import VueLogger from 'vuejs-logger';
 import router from "./router";
 
+import { LOG_LEVEL } from './config'
+
 Vue.config.productionTip = false
 
 const loggingOptions = {
   isEnabled: true,
-  logLevel : 'debug',
+  logLevel : LOG_LEVEL,
   stringifyArguments : false,
   showLogLevel : true,
   showMethodName : true,

@@ -66,7 +66,7 @@ export default {
     },
 
     compareSizes(size, ref) {
-      //only trigger resize if size diff is big, 
+      //only trigger resize if size diff is big,
       //so we don't do excessive image gets against sanity.io
       if (ref - size > 100) {
         return true;
@@ -79,15 +79,15 @@ export default {
 
     handleResize() {
       let clientHeight = document.documentElement.clientHeight;
+      this.$log.debug("clientHeight", clientHeight);
       if (this.compareSizes(clientHeight, this.window.height)) {
         this.window.height = clientHeight;
-        this.$log.debug("clientHeight", clientHeight);
+      }
 
-        let clientWidth = document.documentElement.clientWidth;
-        if (this.compareSizes(clientWidth, this.window.width)) {
-          this.window.width = clientWidth;
-          this.$log.debug("clientWidth", clientWidth);
-        }
+      let clientWidth = document.documentElement.clientWidth;
+      this.$log.debug("clientWidth", clientWidth);
+      if (this.compareSizes(clientWidth, this.window.width)) {
+        this.window.width = clientWidth;
       }
     }
   },
