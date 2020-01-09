@@ -3,6 +3,7 @@
     <div class="header">
       <h1>{{ $appName }}</h1>
       <h4>{{ $appDescription }}</h4>
+      <router-link :to="{name: 'about'}">About</router-link>
     </div>
     <div v-if="!loading">
       <div class="card" v-for="post in posts" v-bind:key="post._id">
