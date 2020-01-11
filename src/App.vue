@@ -91,6 +91,16 @@ body {
   padding: 20px;
 }
 
+.headerbox h1 {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+.headerbox h4 {
+  margin-block-start: 0.0em;
+  margin-block-end: 0.0em;
+}
+
 /* Add a card effect for articles */
 .card {
   background-color: white;

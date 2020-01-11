@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div class="header">
+    <div class="header headerbox">
       <h1>{{ $appName }}</h1>
       <h4>{{ $appDescription }}</h4>
       <router-link :to="{name: 'about'}">About</router-link>
