@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueLogger from 'vuejs-logger';
 import router from "./router";
+import VueGtag from "vue-gtag";
 
 import { LOG_LEVEL } from './config'
 
@@ -18,6 +19,9 @@ const loggingOptions = {
 };
 
 Vue.use(VueLogger, loggingOptions);
+Vue.use(VueGtag, {
+  config: { id: "UA-33541793-1" }
+});
 
 new Vue({
   router,

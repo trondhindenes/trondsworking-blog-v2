@@ -3,9 +3,12 @@
     <router-link :to="{name: 'index'}">Back</router-link>
     <div class="card">
         <h2>About</h2>
-        <strong>
-            Hi I'm trond
-        </strong>
+        <img src="trond.jpg">
+        <p>
+            Hi, I'm Trond Hindenes, SRE lead at RiksTV. 
+            Fan of Python, drones, cloud and snowboarding. 
+            <a href="https://twitter.com/trondhindenes" target="blank">I'm on twitter.</a>
+        </p>
     </div>
     
     
