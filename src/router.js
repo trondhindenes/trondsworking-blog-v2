@@ -26,12 +26,6 @@ export default new Router({
             path: '/about',
             name: 'about',
             component: About
-        },
-        {
-            path: "/:cameFrom?",
-            name: 'index',
-            component: Index,
-            props: route => ({ cameFrom: route.params.cameFrom })
-        },
+        }
     ]
 });

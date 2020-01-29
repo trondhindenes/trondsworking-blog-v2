@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueLogger from 'vuejs-logger';
 import router from "./router";
 import VueGtag from "vue-gtag";
+import store from './store.js'
 
 import { LOG_LEVEL } from './config'
 
@@ -25,5 +26,6 @@ Vue.use(VueGtag, {
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

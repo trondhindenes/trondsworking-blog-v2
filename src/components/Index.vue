@@ -30,12 +30,12 @@ import imageUrlBuilder from "@sanity/image-url";
 
 export default {
   name: "Index",
-  props: ["cameFrom"],
   components: {
     //'single-post': SinglePost
   },
   data() {
     return {
+      cameFrom: null,
       loading: true,
       posts: [],
       singlePost: null,
@@ -47,8 +47,11 @@ export default {
     };
   },
   async created() {
+    this.cameFrom = this.$store.state.cameFrom
+    this.$log.debug('store.state.cameFrom', this.$store.state.cameFrom)
     await this.fetchData();
-    if (this.cameFrom) {
+    if (this.cameFrom && this.cameFrom != "") {
+      this.$log.debug('cameFrom is filled. Setting location')
       location.hash = this.cameFrom
     }
     window.addEventListener("resize", this.handleResize);
