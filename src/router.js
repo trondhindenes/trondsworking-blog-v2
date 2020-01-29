@@ -12,10 +12,9 @@ Vue.use(Router);
 export default new Router({
     routes: [
         {
-            path: "/:cameFrom?",
+            path: "/",
             name: 'index',
-            component: Index,
-            props: route => ({ cameFrom: route.params.cameFrom })
+            component: Index
         },
         {
             path: '/post/:id',
@@ -27,6 +26,12 @@ export default new Router({
             path: '/about',
             name: 'about',
             component: About
-        }
+        },
+        {
+            path: "/:cameFrom?",
+            name: 'index',
+            component: Index,
+            props: route => ({ cameFrom: route.params.cameFrom })
+        },
     ]
 });
